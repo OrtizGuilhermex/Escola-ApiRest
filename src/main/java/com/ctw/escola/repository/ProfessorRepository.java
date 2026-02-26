@@ -48,7 +48,7 @@ public class ProfessorRepository {
                 SELECT id
                 ,nome
                 ,email
-                ,displina
+                ,disciplina
                 FROM professor
                 """;
 
@@ -61,7 +61,7 @@ public class ProfessorRepository {
                 long id = rs.getInt("id");
                 String nome = rs.getString("nome");
                 String email = rs.getString("email");
-                String displina = rs.getString("displina");
+                String displina = rs.getString("disciplina");
                 Professor professor = new Professor(id, nome,email,displina);
                 professorList.add(professor);
             }
