@@ -94,7 +94,7 @@ public class ProfessorRepository {
                 return  professor;
             }
         }
-        throw new RuntimeException("Livro não encontrado");
+        throw new RuntimeException("Professor não encontrado");
     }
 
     public Professor putProfessor(Professor professor) throws SQLException{
