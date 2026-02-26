@@ -7,7 +7,6 @@ import java.util.List;
 public record CursoResponseDto (
         long id,
         String nome,
-        String codigo,
-        List<Professor> listaProfessores
+        String codigo
 ) {
 }

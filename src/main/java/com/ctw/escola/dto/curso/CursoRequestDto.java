@@ -6,7 +6,6 @@ import java.util.List;
 
 public record CursoRequestDto(
         String nome,
-        String codigo,
-        List<Professor> listaProfessorIds
+        String codigo
 ) {
 }

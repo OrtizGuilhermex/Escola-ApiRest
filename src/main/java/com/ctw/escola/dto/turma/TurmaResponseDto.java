@@ -8,7 +8,6 @@ public record TurmaResponseDto (
         long id,
         String nome,
         String nome_curso,
-        String nome_professor,
-        List<Aluno> listaAlunos
+        String nome_professor
 ) {
 }
