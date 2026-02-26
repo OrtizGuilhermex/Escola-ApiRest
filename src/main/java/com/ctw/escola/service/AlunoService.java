@@ -46,11 +46,12 @@ public class AlunoService {
     }
 
     public AlunoResponseDto putAluno (
-            AlunoRequestDto alunoRequestDto)throws SQLException{
+            AlunoRequestDto alunoRequestDto, long id)throws SQLException{
 
         Aluno aluno = alunoMapper.paraEntidade(alunoRequestDto);
 
         alunoRepository.putAluno(aluno);
+        aluno.setId(id);
 
         return alunoMapper.paraResponseDto(aluno);
     }
