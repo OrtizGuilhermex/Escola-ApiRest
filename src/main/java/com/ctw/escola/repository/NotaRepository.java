@@ -1,9 +1,9 @@
 package com.ctw.escola.repository;
 
+import com.ctw.escola.model.Aluno;
 import com.ctw.escola.model.Aula;
 import com.ctw.escola.model.Nota;
 import com.ctw.escola.utils.Conexao;
-import com.sun.source.tree.BreakTree;
 import org.springframework.stereotype.Repository;
 
 import java.sql.*;
@@ -30,8 +30,8 @@ public class NotaRepository {
             PreparedStatement stmt = conn.prepareStatement(query,
                     Statement.RETURN_GENERATED_KEYS)){
 
-            stmt.setLong(1, nota.getAluno_id());
-            stmt.setLong(2,nota.getAula_id());
+            stmt.setLong(1, nota.getAluno().getId());
+            stmt.setLong(2,nota.getAula().getId());
             stmt.setDouble(3,nota.getValor());
             stmt.executeUpdate();
 
@@ -49,13 +49,17 @@ public class NotaRepository {
         List<Nota> notaList = new ArrayList<>();
 
         String query = """
-                SELECT n.id
-                ,n.aluno_id
-                ,n.aula_id
-                ,n.valor
+                SELECT
+                n.id AS nota_id,
+                n.valor,
+                a.id AS aluno_id, 
+                a.nome AS aluno_nome,
+                u.id AS aula_id, 
+                u.assunto AS aula_assunto, 
+                u.data_hora AS aula_data
                 FROM nota n
-                JOIN aluno a ON a.aluno_id = n.id
-                JOIN aula u ON u.id = n.aula_id
+                JOIN aluno a ON n.aluno_id = a.id
+                JOIN aula u ON n.aula_id = u.id
                 """;
 
         try(Connection conn = Conexao.conectar();
@@ -64,11 +68,20 @@ public class NotaRepository {
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()){
-                long id = rs.getLong("id");
-                long aluno_id = rs.getLong("aluno_id");
-                long aula_id = rs.getLong("aula_id");
+                Aluno aluno = new Aluno();
+                aluno.setId(rs.getLong("aluno_id"));
+                aluno.setNome(rs.getString("aluno_nome"));
+
+                Aula aula = new Aula();
+                aula.setId(rs.getLong("aula_id"));
+                aula.setAssunto(rs.getString("aula_assunto"));
+                aula.setData_hora(rs.getObject("aula_data", LocalDateTime.class));
+
+                long idNota = rs.getLong("nota_id");
                 double valor = rs.getDouble("valor");
-                Nota nota = new Nota(id,aluno_id,aula_id,valor);
+
+                Nota nota = new Nota(idNota, aluno, aula, valor);
+
                 notaList.add(nota);
             }
         }
@@ -77,14 +90,18 @@ public class NotaRepository {
 
     public Nota getNotaPorId(long id) throws SQLException{
         String query = """
-                SELECT n.id
-                ,n.aluno_id
-                ,n.aula_id
-                ,n.valor
+                SELECT
+                n.id AS nota_id,
+                n.valor,
+                a.id AS aluno_id,
+                a.nome AS aluno_nome,
+                u.id AS aula_id,
+                u.assunto AS aula_assunto,
+                u.data_hora AS aula_data
                 FROM nota n
-                JOIN aluno a ON a.aluno_id = n.id
-                JOIN aula u ON u.id = n.aula_id
-                WHERE id = ?
+                JOIN aluno a ON n.aluno_id = a.id
+                JOIN aula u ON n.aula_id = u.id
+                WHERE n.id = ?
                 """;
 
         try(Connection conn = Conexao.conectar();
@@ -94,11 +111,20 @@ public class NotaRepository {
             ResultSet rs = stmt.executeQuery();
 
             if(rs.next()){
-                long nota_id = rs.getLong("id");
-                long aluno_id = rs.getLong("aluno_id");
-                long aula_id = rs.getLong("aula_id");
+                Aluno aluno = new Aluno();
+                aluno.setId(rs.getLong("aluno_id"));
+                aluno.setNome(rs.getString("aluno_nome"));
+
+                Aula aula = new Aula();
+                aula.setId(rs.getLong("aula_id"));
+                aula.setAssunto(rs.getString("aula_assunto"));
+                aula.setData_hora(rs.getObject("aula_data", LocalDateTime.class));
+
+                long idNota = rs.getLong("nota_id");
                 double valor = rs.getDouble("valor");
-                Nota nota = new Nota(nota_id,aluno_id,aula_id,valor);
+
+                Nota nota = new Nota(idNota, aluno, aula, valor);
+
                 return nota;
             }
         }
@@ -117,8 +143,8 @@ public class NotaRepository {
         try(Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement(query)){
 
-            stmt.setLong(1, nota.getAluno_id());
-            stmt.setLong(2, nota.getAula_id());
+            stmt.setLong(1, nota.getAluno().getId());
+            stmt.setLong(2, nota.getAula().getId());
             stmt.setDouble(3,nota.getValor());
             stmt.executeUpdate();
         }
