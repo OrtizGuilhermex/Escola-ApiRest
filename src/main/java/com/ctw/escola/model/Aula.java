@@ -1,0 +1,58 @@
+package com.ctw.escola.model;
+
+import java.time.LocalDateTime;
+
+public class Aula {
+
+    private long id;
+    private long turma_id;
+    private LocalDateTime data_hora;
+    private String assunto;
+
+    public Aula(long id, long turma_id, LocalDateTime data_hora, String assunto) {
+        this.id = id;
+        this.turma_id = turma_id;
+        this.data_hora = data_hora;
+        this.assunto = assunto;
+    }
+
+    public Aula(long turma_id, LocalDateTime data_hora, String assunto) {
+        this.turma_id = turma_id;
+        this.data_hora = data_hora;
+        this.assunto = assunto;
+    }
+
+    public Aula() {}
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getTurma_id() {
+        return turma_id;
+    }
+
+    public void setTurma_id(long turma_id) {
+        this.turma_id = turma_id;
+    }
+
+    public LocalDateTime getData_hora() {
+        return data_hora;
+    }
+
+    public void setData_hora(LocalDateTime data_hora) {
+        this.data_hora = data_hora;
+    }
+
+    public String getAssunto() {
+        return assunto;
+    }
+
+    public void setAssunto(String assunto) {
+        this.assunto = assunto;
+    }
+}
