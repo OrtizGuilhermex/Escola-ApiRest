@@ -8,22 +8,22 @@ public class Aluno {
     private String nome;
     private String email;
     private String matricula;
-    private LocalDate data_nacismento;
+    private LocalDate data_nascimento;
 
 
-    public Aluno(long id, String nome, String email, String matricula, LocalDate data_nacismento) {
+    public Aluno(long id, String nome, String email, String matricula, LocalDate data_nascimento) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.matricula = matricula;
-        this.data_nacismento = data_nacismento;
+        this.data_nascimento = data_nascimento;
     }
 
-    public Aluno(String nome, String email, String matricula, LocalDate data_nacismento) {
+    public Aluno(String nome, String email, String matricula, LocalDate data_nascimento) {
         this.nome = nome;
         this.email = email;
         this.matricula = matricula;
-        this.data_nacismento = data_nacismento;
+        this.data_nascimento = data_nascimento;
     }
 
     public Aluno() {}
