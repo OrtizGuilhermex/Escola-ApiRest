@@ -1,5 +1,6 @@
 package com.ctw.escola.mapper;
 
+import com.ctw.escola.dto.aula.AulaRequestDto;
 import com.ctw.escola.dto.aula.AulaResponseDto;
 import com.ctw.escola.model.Aula;
 import org.springframework.stereotype.Component;
@@ -8,12 +9,12 @@ import org.springframework.stereotype.Component;
 public class AulaMapper {
 
     public Aula paraEntidade(
-            AulaResponseDto aulaResponseDto
+            AulaRequestDto aulaRequestDtoDto
     ) {
         return new Aula(
-                aulaResponseDto.turma_id(),
-                aulaResponseDto.data_hora(),
-                aulaResponseDto.assunto()
+                aulaRequestDtoDto.turma_id(),
+                aulaRequestDtoDto.data_hora(),
+                aulaRequestDtoDto.assunto()
         );
     }
 
