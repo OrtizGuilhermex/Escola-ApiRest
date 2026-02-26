@@ -17,7 +17,7 @@ public class AulaRepository {
 
     public Aula postAula(Aula aula) throws SQLException {
         String query = """
-                INSERT INTO Aula(
+                INSERT INTO aula(
                 turma_id,
                 data_hora,
                 assunto,
@@ -53,7 +53,7 @@ public class AulaRepository {
                 ,t.turma_id
                 ,a.data_hora
                 ,a.assunto
-                FROM Aula a
+                FROM aula a
                 JOIN turma t ON a.turma_id = t.id
                 """;
 
@@ -80,7 +80,7 @@ public class AulaRepository {
                 ,t.turma_id
                 ,a.data_hora
                 ,a.assunto
-                FROM Aula a
+                FROM aula a
                 JOIN turma t ON a.turma_id = t.id
                 WHERE id = ?
                 """;
