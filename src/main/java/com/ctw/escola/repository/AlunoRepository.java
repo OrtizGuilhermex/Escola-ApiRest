@@ -101,7 +101,7 @@ public class AlunoRepository {
                 return  aluno;
             }
         }
-        throw new RuntimeException("Livro não encontrado");
+        throw new RuntimeException("Aluno não encontrado");
     }
 
     public Aluno putAluno(Aluno aluno) throws SQLException{
