@@ -50,7 +50,7 @@ public class AulaRepository {
 
         String query = """
                 SELECT a.id
-                ,t.turma_id
+                ,a.turma_id
                 ,a.data_hora
                 ,a.assunto
                 FROM aula a
@@ -77,12 +77,12 @@ public class AulaRepository {
     public Aula getAulaPorId(long id) throws SQLException{
         String query = """
                 SELECT a.id
-                ,t.turma_id
+                ,a.turma_id
                 ,a.data_hora
                 ,a.assunto
                 FROM aula a
                 JOIN turma t ON a.turma_id = t.id
-                WHERE id = ?
+                WHERE a.id = ?
                 """;
 
         try(Connection conn = Conexao.conectar();
@@ -92,11 +92,11 @@ public class AulaRepository {
             ResultSet rs = stmt.executeQuery();
 
             if(rs.next()){
-                long idAula = rs.getLong("id");
+                long aula_id = rs.getLong("id");
                 long turma_id = rs.getLong("turma_id");
                 LocalDateTime data_hora = rs.getTimestamp("data_hora").toLocalDateTime();
                 String assunto = rs.getString("assunto");
-                Aula aula = new Aula (idAula,turma_id,data_hora,assunto);
+                Aula aula = new Aula (aula_id,turma_id,data_hora,assunto);
                 return aula;
             }
         }
