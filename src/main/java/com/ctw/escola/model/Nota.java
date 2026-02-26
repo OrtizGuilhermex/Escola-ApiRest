@@ -3,20 +3,20 @@ package com.ctw.escola.model;
 public class Nota {
 
     private long id;
-    private long aluno_id;
-    private long aula_id;
+    private Aluno aluno;
+    private Aula aula;
     private double valor;
 
-    public Nota(long id, long aluno_id, long aula_id, double valor) {
+    public Nota(long id, Aluno aluno, Aula aula, double valor) {
         this.id = id;
-        this.aluno_id = aluno_id;
-        this.aula_id = aula_id;
+        this.aluno = aluno;
+        this.aula = aula;
         this.valor = valor;
     }
 
-    public Nota(long aluno_id, long aula_id, double valor) {
-        this.aluno_id = aluno_id;
-        this.aula_id = aula_id;
+    public Nota(Aluno aluno, Aula aula, double valor) {
+        this.aluno = aluno;
+        this.aula = aula;
         this.valor = valor;
     }
 
@@ -30,20 +30,20 @@ public class Nota {
         this.id = id;
     }
 
-    public long getAluno_id() {
-        return aluno_id;
+    public Aluno getAluno() {
+        return aluno;
     }
 
-    public void setAluno_id(long aluno_id) {
-        this.aluno_id = aluno_id;
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
     }
 
-    public long getAula_id() {
-        return aula_id;
+    public Aula getAula() {
+        return aula;
     }
 
-    public void setAula_id(long aula_id) {
-        this.aula_id = aula_id;
+    public void setAula(Aula aula) {
+        this.aula = aula;
     }
 
     public double getValor() {
