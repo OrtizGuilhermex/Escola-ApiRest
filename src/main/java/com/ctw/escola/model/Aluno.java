@@ -60,11 +60,11 @@ public class Aluno {
         this.matricula = matricula;
     }
 
-    public LocalDate getData_nacismento() {
-        return data_nacismento;
+    public LocalDate getData_nascimento() {
+        return data_nascimento;
     }
 
-    public void setData_nacismento(LocalDate data_nacismento) {
-        this.data_nacismento = data_nacismento;
+    public void setdata_nascimento(LocalDate data_nascimento) {
+        this.data_nascimento = data_nascimento;
     }
 }

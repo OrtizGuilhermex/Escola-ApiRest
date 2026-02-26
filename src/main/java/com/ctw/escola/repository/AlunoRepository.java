@@ -31,7 +31,7 @@ public class AlunoRepository {
             stmt.setString(1, aluno.getNome());
             stmt.setString(2, aluno.getEmail());
             stmt.setString(3, aluno.getMatricula());
-            stmt.setDate(4,Date.valueOf(aluno.getData_nacismento()));
+            stmt.setDate(4,Date.valueOf(aluno.getData_nascimento()));
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
@@ -120,7 +120,7 @@ public class AlunoRepository {
             stmt.setString(1, aluno.getNome());
             stmt.setString(2, aluno.getEmail());
             stmt.setString(3, aluno.getMatricula());
-            stmt.setDate(4,Date.valueOf(aluno.getData_nacismento()));
+            stmt.setDate(4,Date.valueOf(aluno.getData_nascimento()));
             stmt.setLong(5,aluno.getId());
             stmt.executeUpdate();
         }
