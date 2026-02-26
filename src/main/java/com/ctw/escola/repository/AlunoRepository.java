@@ -74,7 +74,7 @@ public class AlunoRepository {
         return alunos;
     }
 
-    public Aluno getAlunosPorId(int id) throws SQLException{
+    public Aluno getAlunosPorId(long id) throws SQLException{
         String query = """
                 SELECT id
                 ,nome
@@ -88,7 +88,7 @@ public class AlunoRepository {
         try(Connection conn = Conexao.conectar();
             PreparedStatement stmt = conn.prepareStatement(query)){
 
-            stmt.setInt(1,id);
+            stmt.setLong(1,id);
             ResultSet rs = stmt.executeQuery();
 
             if(rs.next()){
@@ -127,7 +127,7 @@ public class AlunoRepository {
         return aluno;
     }
 
-    public void deletarEmprestimo(int id)throws SQLException{
+    public void deletarAluno(long id)throws SQLException{
         String query = """
                 DELETE FROM aluno
                 WHERE id = ?
@@ -136,7 +136,7 @@ public class AlunoRepository {
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(query)) {
 
-            stmt.setInt(1, id);
+            stmt.setLong(1, id);
             stmt.executeUpdate();
         }
     }
