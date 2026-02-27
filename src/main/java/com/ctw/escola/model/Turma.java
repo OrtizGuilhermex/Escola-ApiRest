@@ -4,20 +4,20 @@ public class Turma {
 
     private long id;
     private String nome;
-    private long curso_id;
-    private long professor_id;
+    private Curso curso;
+    private Professor professor;
 
-    public Turma(long id, String nome, long curso_id, long professor_id) {
+    public Turma(long id, String nome, Curso curso, Professor professor) {
         this.id = id;
         this.nome = nome;
-        this.curso_id = curso_id;
-        this.professor_id = professor_id;
+        this.curso = curso;
+        this.professor = professor;
     }
 
-    public Turma(String nome, long curso_id, long professor_id) {
+    public Turma(String nome, Curso curso, Professor professor) {
         this.nome = nome;
-        this.curso_id = curso_id;
-        this.professor_id = professor_id;
+        this.curso = curso;
+        this.professor = professor;
     }
 
     public Turma() {}
@@ -38,19 +38,19 @@ public class Turma {
         this.nome = nome;
     }
 
-    public long getCurso_id() {
-        return curso_id;
+    public Curso getCurso() {
+        return curso;
     }
 
-    public void setCurso_id(long curso_id) {
-        this.curso_id = curso_id;
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 
-    public long getProfessor_id() {
-        return professor_id;
+    public Professor getProfessor() {
+        return professor;
     }
 
-    public void setProfessor_id(long professor_id) {
-        this.professor_id = professor_id;
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
     }
 }
