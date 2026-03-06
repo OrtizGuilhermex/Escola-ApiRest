@@ -3,6 +3,7 @@ package com.ctw.escola.controller;
 import com.ctw.escola.dto.curso.CursoRequestDto;
 import com.ctw.escola.dto.curso.CursoResponseDto;
 import com.ctw.escola.service.CursoService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public class CursoController {
 
     @PostMapping
     public CursoResponseDto postCurso(
-            @RequestBody CursoRequestDto cursoRequestDto
+            @Valid @RequestBody CursoRequestDto cursoRequestDto
     ){
         try {
             return cursoService.postCurso(cursoRequestDto);
@@ -52,7 +53,7 @@ public class CursoController {
 
     @PutMapping("/{id}")
     public CursoResponseDto putCurso(
-            @RequestBody CursoRequestDto cursoRequestDto,
+            @Valid @RequestBody CursoRequestDto cursoRequestDto,
             @PathVariable long id
     ){
         try {

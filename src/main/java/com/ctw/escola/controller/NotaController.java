@@ -4,6 +4,7 @@ package com.ctw.escola.controller;
 import com.ctw.escola.dto.nota.NotaRequestDto;
 import com.ctw.escola.dto.nota.NotaResponseDto;
 import com.ctw.escola.service.NotaService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public class NotaController {
 
     @PostMapping
     public NotaResponseDto putNotas(
-            @RequestBody NotaRequestDto notaRequestDto
+            @Valid @RequestBody NotaRequestDto notaRequestDto
     ){
         try {
             return notaService.postNota(notaRequestDto);
@@ -52,7 +53,7 @@ public class NotaController {
 
     @PutMapping("/{id}")
     public NotaResponseDto putNota(
-            @RequestBody NotaRequestDto notaRequestDto,
+            @Valid @RequestBody NotaRequestDto notaRequestDto,
             @PathVariable long id
     ){
         try {

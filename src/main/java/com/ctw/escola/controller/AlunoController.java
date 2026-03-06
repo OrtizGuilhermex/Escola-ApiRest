@@ -3,6 +3,7 @@ package com.ctw.escola.controller;
 import com.ctw.escola.dto.aluno.AlunoRequestDto;
 import com.ctw.escola.dto.aluno.AlunoResponseDto;
 import com.ctw.escola.service.AlunoService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ public class AlunoController {
 
     @PostMapping
     public AlunoResponseDto postAluno(
-            @RequestBody AlunoRequestDto alunoRequestDto
+            @Valid @RequestBody AlunoRequestDto alunoRequestDto
     ){
         try{
             return alunoService.postAluno(alunoRequestDto);
@@ -51,7 +52,7 @@ public class AlunoController {
 
     @PutMapping("/{id}")
     public AlunoResponseDto putAluno(
-            @RequestBody AlunoRequestDto alunoRequestDto,
+            @Valid @RequestBody AlunoRequestDto alunoRequestDto,
             @PathVariable long id
     ){
         try {

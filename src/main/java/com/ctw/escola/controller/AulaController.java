@@ -4,6 +4,7 @@ import com.ctw.escola.dto.aula.AulaRequestDto;
 import com.ctw.escola.dto.aula.AulaResponseDto;
 import com.ctw.escola.model.Aula;
 import com.ctw.escola.service.AulaService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class AulaController {
 
     @PostMapping
     public AulaResponseDto postAluno(
-            @RequestBody AulaRequestDto aulaRequestDto
+            @Valid @RequestBody AulaRequestDto aulaRequestDto
     ){
         try {
             return aulaService.postAula(aulaRequestDto);
@@ -54,7 +55,7 @@ public class AulaController {
 
     @PutMapping
     public AulaResponseDto putAula(
-            @RequestBody AulaRequestDto aulaRequestDto,
+            @Valid @RequestBody AulaRequestDto aulaRequestDto,
             @PathVariable long id
     ){
         try {

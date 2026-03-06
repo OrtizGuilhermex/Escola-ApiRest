@@ -3,6 +3,7 @@ package com.ctw.escola.controller;
 import com.ctw.escola.dto.professor.ProfessorRequestDto;
 import com.ctw.escola.dto.professor.ProfessorResponseDto;
 import com.ctw.escola.service.ProfessorService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ public class ProfessorController {
 
     @PostMapping
     public ProfessorResponseDto postProfessor(
-            @RequestBody ProfessorRequestDto professorRequestDto
+            @Valid @RequestBody ProfessorRequestDto professorRequestDto
     ){
         try {
             return professorService.postProfessor(professorRequestDto);
@@ -49,7 +50,7 @@ public class ProfessorController {
 
     @PutMapping("/{id}")
     public ProfessorResponseDto putProfessor(
-            @RequestBody ProfessorRequestDto professorRequestDto,
+            @Valid @RequestBody ProfessorRequestDto professorRequestDto,
             @PathVariable long id
     ){
         try {

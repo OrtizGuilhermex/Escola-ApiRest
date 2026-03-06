@@ -6,6 +6,7 @@ import com.ctw.escola.dto.turma.TurmaRequestDto;
 import com.ctw.escola.dto.turma.TurmaResponseDto;
 import com.ctw.escola.service.NotaService;
 import com.ctw.escola.service.TurmaService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class TurmaController {
 
     @PostMapping
     public TurmaResponseDto putTurma(
-            @RequestBody TurmaRequestDto turmaRequestDto
+            @Valid @RequestBody TurmaRequestDto turmaRequestDto
     ){
         try {
             return turmaService.postTurma(turmaRequestDto);
@@ -55,7 +56,7 @@ public class TurmaController {
 
     @PutMapping("/{id}")
     public TurmaResponseDto putTurma(
-            @RequestBody TurmaRequestDto turmaRequestDto,
+            @Valid @RequestBody TurmaRequestDto turmaRequestDto,
             @PathVariable long id
     ){
         try {
